@@ -1,0 +1,85 @@
+slots:
+  location:
+    type: text
+  location_found:
+    type: categorical
+    values:
+    - found
+    - notfound
+    - tier3
+  cuisine:
+    type: categorical
+    values:
+    - chinese
+    - mexican
+    - italian
+    - american
+    - south indian
+    - north indian
+  price:
+    type: categorical
+    values:
+    - lesser than 300
+    - between 300 to 700
+    - more than 700
+  email:
+    type: text
+
+entities:
+- location
+- cuisine
+- price
+- email
+
+intents:
+ - greet
+ - affirm
+ - deny
+ - goodbye
+ - thankyou
+ - restaurant_search
+
+
+templates:
+  utter_greet:
+    - "hey there! How may i help you"
+    - "Hi, How can I help you!"
+    - "Hey, How is it going. How May I help you Today"
+  utter_bye:
+    - "goodbye :("
+    - "Bye-bye"
+  utter_default:
+    - "default message"
+  utter_ask_cuisine: 
+    - text: "What kind of cuisine would you prefer?\n1. Chinese\n2. Mexican\n3. Italian\n4. American\n5. South Indian\n6. North Indian\n"
+  utter_ask_price:
+    - text: "What price range are you looking at? (Average budget of 2 people)\n1. lesser than 300\n2. between 300 to 700\n3. more than 700\n"
+  utter_ask_howcanhelp:
+    - "How can I help you?"
+  utter_ask_location:
+    - "In what location?"
+    - "May I know, in which location, do you need our service?"
+  utter_ask_mail:
+    - "To which mail address should I send the restaurant details?"
+    - "Specify your mail address. We will send the best restaurants to your mailbox"
+  utter_service_not_available:
+    - "Service not available for the location. Can you please suggest some other location?"
+    - "We are not operating in this location. Can you please suggest some other location?"
+  utter_location_not_found:
+    - "Location not found. Please try again!"
+    - "Can you please specify the location again? Cant able to find the location"
+
+actions:
+- utter_greet
+- utter_bye
+- utter_default
+- utter_ask_cuisine
+- utter_ask_price
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_mail
+- utter_service_not_available
+- utter_location_not_found
+- actions.ActionSearchRestaurants
+- actions.Check_location
+- actions.SendMail

@@ -1,0 +1,106 @@
+action_factory: null
+action_names:
+- utter_greet
+- utter_bye
+- utter_default
+- utter_ask_cuisine
+- utter_ask_price
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_mail
+- utter_service_not_available
+- utter_location_not_found
+- action_restaurant
+- action_check_location
+- action_email_restaurant_details
+actions:
+- utter_greet
+- utter_bye
+- utter_default
+- utter_ask_cuisine
+- utter_ask_price
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_mail
+- utter_service_not_available
+- utter_location_not_found
+- actions.ActionSearchRestaurants
+- actions.Check_location
+- actions.SendMail
+config:
+  store_entities_as_slots: true
+entities:
+- location
+- cuisine
+- price
+- email
+intents:
+- greet
+- affirm
+- deny
+- goodbye
+- thankyou
+- restaurant_search
+slots:
+  cuisine:
+    initial_value: null
+    type: rasa_core.slots.CategoricalSlot
+    values:
+    - chinese
+    - mexican
+    - italian
+    - american
+    - south indian
+    - north indian
+  email:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  location:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  location_found:
+    initial_value: null
+    type: rasa_core.slots.CategoricalSlot
+    values:
+    - found
+    - notfound
+    - tier3
+  price:
+    initial_value: null
+    type: rasa_core.slots.CategoricalSlot
+    values:
+    - lesser than 300
+    - between 300 to 700
+    - more than 700
+templates:
+  utter_ask_cuisine:
+  - text: "What kind of cuisine would you prefer?\n1. Chinese\n2. Mexican\n3. Italian\n\
+      4. American\n5. South Indian\n6. North Indian\n"
+  utter_ask_howcanhelp:
+  - text: How can I help you?
+  utter_ask_location:
+  - text: In what location?
+  - text: May I know, in which location, do you need our service?
+  utter_ask_mail:
+  - text: To which mail address should I send the restaurant details?
+  - text: Specify your mail address. We will send the best restaurants to your mailbox
+  utter_ask_price:
+  - text: "What price range are you looking at? (Average budget of 2 people)\n1. lesser\
+      \ than 300\n2. between 300 to 700\n3. more than 700\n"
+  utter_bye:
+  - text: goodbye :(
+  - text: Bye-bye
+  utter_default:
+  - text: default message
+  utter_greet:
+  - text: hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today
+  utter_location_not_found:
+  - text: Location not found. Please try again!
+  - text: Can you please specify the location again? Cant able to find the location
+  utter_service_not_available:
+  - text: Service not available for the location. Can you please suggest some other
+      location?
+  - text: We are not operating in this location. Can you please suggest some other
+      location?
